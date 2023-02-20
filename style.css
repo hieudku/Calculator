@@ -1,0 +1,28 @@
+
+header {
+    padding: 20px;
+    font-size: 32px;
+}
+
+footer {
+    font-size: 16px;
+    padding-top: 20px;
+    bottom: 0;
+    position: absolute;
+    background-color: rgb(28, 70, 85);
+    color: white;
+    width: 100%;
+}
+
+header, footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    background-color: antiquewhite;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+}
