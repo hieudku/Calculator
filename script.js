@@ -8,7 +8,7 @@ let input = 0;
 const digitInputs = document.querySelectorAll('.num'); // access all class "num"
     digitInputs.forEach(digitInput => { // loop through "num" button to add click event listener.
         digitInput.addEventListener('click', () => {
-            this.alert()
+            
         });
     });
 // console.log testing.
