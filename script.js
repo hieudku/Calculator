@@ -3,17 +3,19 @@ const userInput = { // for later use
     operators: ["+", "-", "×", "÷"],
     result: "=",
 }
-//Input Methods
-let input = 0;
+//Input display
+const topScreen = document.querySelector(".screenTop");
 const digitInputs = document.querySelectorAll('.num'); // access all class "num"
     digitInputs.forEach(digitInput => { // loop through "num" button to add click event listener.
-        digitInput.addEventListener('click', () => {
-            
+        digitInput.addEventListener('click', (event) => {
+            const inputDigit = event.target.innerHTML;
+            const displayDigit = document.createTextNode(inputDigit); // create a text node to append it to the first digit displayed.
+            topScreen.appendChild(displayDigit);
         });
     });
 // console.log testing.
 
-//Input Displays.
+
 
 
 //Functions.
@@ -56,9 +58,9 @@ const divide = function(a, b) { // difference
 
 
 //test functions with prompt
-const a = prompt("a");
-const b = prompt("b");
-const method = prompt("method: sum, subtract, multiply, divide");
+const a = 0;
+const b = 0;
+const method = 0;
 const ab = [a, b];
     if (method == "sum") {
        let result = add(a, b);
