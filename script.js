@@ -1,10 +1,11 @@
 const userInput = { // for later use
     number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    operators: ["+", "-", "×", "÷"],
+    operators: ["+", "-", "x", "÷"],
     result: "=",
 }
+
 //Input display
-let input = 0;
+let input = null; // user input values are stored here.
 const topScreen = document.querySelector(".screenTop");
 const digitInputs = document.querySelectorAll('.num'); // access all class "num"
     digitInputs.forEach(digitInput => { // loop through "num" button to add click event listener.
@@ -13,15 +14,25 @@ const digitInputs = document.querySelectorAll('.num'); // access all class "num"
             const displayDigit = document.createTextNode(inputDigit); // create a text node to append it to the first digit displayed.
             topScreen.appendChild(displayDigit);
             input = parseInt(inputDigit);
+            console.log('input: ' + input);
         });
     });
-
 //Operators function to calculate
 //Should clear inputDisplay whenever operators are clicked then store value, prepare for executing.
-let equationResult = input;
-
-
-
+let equationResult = 0;
+let operatorInput = document.querySelectorAll(".ope");
+    operatorInput.forEach(operator => {
+        operator.addEventListener('click', (event) => {
+            operatorInput = event.target.innerHTML; //access the symbols.
+            const displayOperator = document.createTextNode(operatorInput);
+            topScreen.appendChild(displayOperator);
+            if (operatorInput == userInput.operators[0]) {
+                let sum = input + input;
+                equationResult = sum;
+                
+            }
+        });
+    });
 //Output display & execute button
 const bottomScreen = document.querySelector(".screenBottom");
 const outputEqual = document.querySelector(".equ");
@@ -33,10 +44,10 @@ const outputEqual = document.querySelector(".equ");
 
 
 //Functions.
-const add = function(a, b) { //sum
+function add(input1, input2) { //sum
     const inputPlus = {
-        first: a,
-        second: b,
+        first: input1,
+        second: input2,
     }
     let sum = parseInt(inputPlus.first) + parseInt(inputPlus.second);
         return sum;
