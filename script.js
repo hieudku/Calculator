@@ -4,6 +4,7 @@ const userInput = { // for later use
     result: "=",
 }
 //Input display
+let input = 0;
 const topScreen = document.querySelector(".screenTop");
 const digitInputs = document.querySelectorAll('.num'); // access all class "num"
     digitInputs.forEach(digitInput => { // loop through "num" button to add click event listener.
@@ -11,10 +12,23 @@ const digitInputs = document.querySelectorAll('.num'); // access all class "num"
             const inputDigit = event.target.innerHTML;
             const displayDigit = document.createTextNode(inputDigit); // create a text node to append it to the first digit displayed.
             topScreen.appendChild(displayDigit);
+            input = parseInt(inputDigit);
         });
     });
-// console.log testing.
 
+//Operators function to calculate
+//Should clear inputDisplay whenever operators are clicked then store value, prepare for executing.
+let equationResult = input;
+
+
+
+//Output display & execute button
+const bottomScreen = document.querySelector(".screenBottom");
+const outputEqual = document.querySelector(".equ");
+    outputEqual.addEventListener('click', (event) => {
+        const outputDisplay = document.createTextNode(equationResult);
+        bottomScreen.innerHTML = equationResult;
+    });
 
 
 
