@@ -6,44 +6,54 @@ const userInput = { // for later use
 let displayArray1 = [];//empty arrays to catch all instances of the first number.
 let displayArray2 = [];
 let jointInput1;
+let jointInput2;
 //Input display
 let input1 = null; // user input values are stored here.
+let input2 = null;
 let displayDigit;
+    
 const topScreen = document.querySelector(".screenTop");
 const digitInputs = document.querySelectorAll('.num'); // access all class "num"
     digitInputs.forEach(digitInput => { // loop through "num" button to add click event listener.
-        digitInput.addEventListener('click', (event) => {
-            const inputDigit = event.target.innerHTML;
+        digitInput.addEventListener('click', event1 => {
+            const inputDigit = event1.target.innerHTML;
             displayDigit = document.createTextNode(inputDigit); // create a text node to append it to the first digit displayed.
             topScreen.appendChild(displayDigit);
             displayArray1.push(inputDigit);//push all instances of input1 into array.
-
-
+            });
         });
-    });
+
 //Operators function to calculate
 //Should clear inputDisplay whenever operators are clicked then store value, prepare for executing.
-let equationResult = 0;
+let equationResult;
 let operatorInput = document.querySelectorAll(".ope");
     operatorInput.forEach(operator => {
         operator.addEventListener('click', (event) => {//only return input1 once an operator is clicked.
-            jointInput1 = displayArray1.join('');//join elements inside array into string
-            console.log(jointInput1);
-            input1 = parseInt(jointInput1);//assign joint string into input1 parsed as integer.
-            console.log('input: ' + input1);
             operatorInput = event.target.innerHTML; //access the symbols.
-            const displayOperator = document.createTextNode(operatorInput);
-            topScreen.appendChild(displayOperator);
-            if (operatorInput == userInput.operators[0]) {
-                let sum = input1 + input1;
-                equationResult = sum;
+            jointInput1 = displayArray1.join('');//join elements inside array into string
+            console.log('first input: '+jointInput1);
+            input1 = parseInt(jointInput1);//assign joint string into input1 parsed as integer.
+            const reset = document.querySelector(".screenTop");
+            while(reset.firstChild) {
+                reset.removeChild(reset.firstChild);
             }
+            console.log(operatorInput);
+            displayArray1 = []; //empty array after operator clicked, ready to take in input 2
         });
     });
+
 //Output display & execute button
 const bottomScreen = document.querySelector(".screenBottom");
 const outputEqual = document.querySelector(".equ");
     outputEqual.addEventListener('click', (event) => {
+        jointInput2 = displayArray1.join('');
+        console.log('second input: '+jointInput2);
+        input2 = parseInt(jointInput2);
+        if (operatorInput == userInput.operators[0]) {
+            let sum = input1 + input2;
+            equationResult = sum;
+            console.log('equal: ' +sum);
+        }
         const outputDisplay = document.createTextNode(equationResult);
         bottomScreen.innerHTML = equationResult;
     });
