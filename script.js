@@ -1,17 +1,15 @@
-const userInput = { // for later use
+const userInput = { // for comparing with inputs.
     number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     operators: ["+", "-", "x", "÷"],
     result: "=",
 }
-let displayArray1 = [];//empty arrays to catch all instances of the first number.
-let displayArray2 = [];
-let jointInput1;
+let displayArray = [];//empty arrays to catch all value instances of the pressed number button.
+let jointInput1;// join elements in above array into string as full number.
 let jointInput2;
 //Input display
 let input1 = null; // user input values are stored here.
 let input2 = null;
 let displayDigit;
-    
 const topScreen = document.querySelector(".screenTop");
 const digitInputs = document.querySelectorAll('.num'); // access all class "num"
     digitInputs.forEach(digitInput => { // loop through "num" button to add click event listener.
@@ -19,104 +17,69 @@ const digitInputs = document.querySelectorAll('.num'); // access all class "num"
             const inputDigit = event1.target.innerHTML;
             displayDigit = document.createTextNode(inputDigit); // create a text node to append it to the first digit displayed.
             topScreen.appendChild(displayDigit);
-            displayArray1.push(inputDigit);//push all instances of input1 into array.
+            displayArray.push(inputDigit);//push all instances of input1 into array.
             });
         });
-
 //Operators function to calculate
-//Should clear inputDisplay whenever operators are clicked then store value, prepare for executing.
-let equationResult;
+let equationResult = null;
 let operatorInput = document.querySelectorAll(".ope");
     operatorInput.forEach(operator => {
         operator.addEventListener('click', (event) => {//only return input1 once an operator is clicked.
             operatorInput = event.target.innerHTML; //access the symbols.
-            jointInput1 = displayArray1.join('');//join elements inside array into string
+            displayOp = document.createTextNode(operatorInput);
+            topScreen.appendChild(displayOp);
+            jointInput1 = displayArray.join('');//join elements inside array into string
             console.log('first input: '+jointInput1);
             input1 = parseInt(jointInput1);//assign joint string into input1 parsed as integer.
-            const reset = document.querySelector(".screenTop");
-            while(reset.firstChild) {
-                reset.removeChild(reset.firstChild);
-            }
             console.log(operatorInput);
-            displayArray1 = []; //empty array after operator clicked, ready to take in input 2
+            displayArray = []; //empty array after operator clicked, ready to take value of input 2
         });
     });
-
 //Output display & execute button
 const bottomScreen = document.querySelector(".screenBottom");
 const outputEqual = document.querySelector(".equ");
     outputEqual.addEventListener('click', (event) => {
-        jointInput2 = displayArray1.join('');
+        jointInput2 = displayArray.join('');
         console.log('second input: '+jointInput2);
         input2 = parseInt(jointInput2);
-        if (operatorInput == userInput.operators[0]) {
-            let sum = input1 + input2;
-            equationResult = sum;
-            console.log('equal: ' +sum);
-        }
+        //conditions for calculations based on what operator were clicked.
+            if (operatorInput == userInput.operators[0]) {
+                let sum = input1 + input2;
+                equationResult = sum;
+                console.log('equal: ' +sum);
+            }
+            else if (operatorInput == userInput.operators[1]) {
+                let subtraction = input1 - input2;
+                equationResult = subtraction;
+                console.log('equal: ' +subtraction);
+            }
+            else if (operatorInput == userInput.operators[2]) {
+                let multiply = input1 * input2;
+                equationResult = multiply;
+                console.log('equal: ' +multiply);
+            }
+            else if (operatorInput == userInput.operators[3]) {
+                let division = input1 / input2;
+                equationResult = division;
+                console.log('equals: ' +division);
+            }
         const outputDisplay = document.createTextNode(equationResult);
         bottomScreen.innerHTML = equationResult;
+        displayArray = [];
     });
-
-
-
-//Functions.
-function add(input1, input2) { //sum
-    const inputPlus = {
-        first: input1,
-        second: input2,
-    }
-    let sum = parseInt(inputPlus.first) + parseInt(inputPlus.second);
-        return sum;
-}
-const subtract = function(a, b) { // difference
-    const inputMinus = {
-        first: a,
-        second: b,
-    }
-    let difference = parseInt(inputMinus.first) - parseInt(inputMinus.second);
-        return difference;
-}
-const multiply = function(a, b) { // difference
-    const inputTimes = {
-        first: a,
-        second: b,
-    }
-    let multiplyBy = parseInt(inputTimes.first) * parseInt(inputTimes.second);
-        return multiplyBy;
-}
-const divide = function(a, b) { // difference
-    const inputDivide = {
-        first: a,
-        second: b,
-    }
-    let divideBy = inputDivide.first / inputDivide.second;
-        return divideBy;
-}
-//Output displays.
-
-
-//Reset.
-
-
-//test functions with prompt
-const a = 0;
-const b = 0;
-const method = 0;
-const ab = [a, b];
-    if (method == "sum") {
-       let result = add(a, b);
-        console.log(a +" + "+ b + " = " + result);
-    }
-        else if (method == "subtract") {
-           let result = subtract(a, b);
-            console.log(a +" - "+ b + " = " + result);
-        }
-        else if (method == "multiply") {
-            let result = multiply(a, b);
-             console.log(a +" * "+ b + " = " + result);
-         }
-         else if (method == "divide") {
-            let result = divide(a, b);
-             console.log(a +" / "+ b + " = " + result);
-         }
+//Reset (AC)
+const allClear = document.querySelector(".clearBtn");
+        allClear.addEventListener('click', (clear) => {
+            //Clear both screens
+            let clearScreenTop = document.querySelector(".screenTop");
+            while (clearScreenTop.firstChild) {
+                clearScreenTop.removeChild(clearScreenTop.firstChild);
+            }
+            let clearScreenBottom = document.querySelector(".screenBottom");
+            clearScreenBottom.removeChild(clearScreenBottom.firstChild);
+        });
+            //clear all input, outoput values
+            input1 = null;
+            input2 = null;
+            displayArray = [];
+            equationResult = null;
