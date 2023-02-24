@@ -42,7 +42,7 @@ const outputEqual = document.querySelector(".equ");
             let clearInput = document.querySelector(".screenTop");
                 while (clearInput.firstChild) {
                     clearInput.removeChild(clearInput.firstChild);
-                }        
+                }
         jointInput2 = displayArray.join('');
         console.log('second input: '+jointInput2);
         input2 = parseFloat(jointInput2);
@@ -67,7 +67,10 @@ const outputEqual = document.querySelector(".equ");
                     equationResult = "ERROR";
                 }
             }
-        const outputDisplay = document.createTextNode(equationResult);
+                else if (input2 = null) {
+                    equationResult = input1;
+                }
+        document.createTextNode(equationResult);
         bottomScreen.innerHTML = equationResult;
         displayArray = [];
     });
@@ -93,4 +96,35 @@ const deleteInput = document.querySelector(".deleteBtn");
             let removeChar = document.querySelector(".screenTop");
             removeChar.removeChild(removeChar.lastChild);
             displayArray.pop();// remove last element in display array when clicked C.
-            })
+            });
+// change colors.
+let colorStyle = "";
+function changeColor() {
+    colorStyle = colorArray[Math.floor(Math.random() * colorArray.length)];
+}
+const colorArray = 
+    ['rgb(141, 117, 168)',
+    'rgb(242, 207, 141)', 
+    'rgb(128, 177, 232)', 
+    'rgb(128, 232, 192)',
+    'rgb(125, 113, 113)'];
+const colors = document.querySelector('.colorBtn');
+            colors.addEventListener('click', (e) => {
+                changeColor();
+                document.getElementById("calculator").style.backgroundColor = colorStyle;
+            });
+// change fonts.
+let font = "";
+function changeFont() {
+    font = fontArray[Math.floor(Math.random() * fontArray.length)];
+}
+const fontArray = ['cursive', 'serif', 'monospace', 'fantasy'];
+const fonts = document.querySelector('.fontBtn');
+const buttons = document.querySelectorAll('button');
+    fonts.addEventListener('click', (e) => {
+        changeFont();
+        buttons.forEach(button => {
+            button.style.fontFamily = font;
+        })
+    });
+            
