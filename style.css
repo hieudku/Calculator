@@ -68,12 +68,12 @@ button {
 .screenTop {
     padding: 5px;
     padding-top: 15px;
-    font-size: 24px;
+    font-size: 36px;
 }
 .screenBottom {
     padding: 5px;
     padding-top: 10px;
-    font-size:42px;
+    font-size:54px;
 }
 button:hover {
     background-color: rgb(205, 148, 170);
