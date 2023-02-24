@@ -60,7 +60,7 @@ const outputEqual = document.querySelector(".equ");
             }
             else if (operatorInput == userInput.operators[3]) {
                 let division = input1 / input2;
-                equationResult = division;
+                equationResult = Math.round(division * 1000000) / 1000000;//round to n decimal places
                 console.log('equals: ' +division);
                 if (input2 == 0) {
                     equationResult = "ERROR";
