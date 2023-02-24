@@ -62,6 +62,9 @@ const outputEqual = document.querySelector(".equ");
                 let division = input1 / input2;
                 equationResult = division;
                 console.log('equals: ' +division);
+                if (input2 == 0) {
+                    equationResult = "ERROR";
+                }
             }
         const outputDisplay = document.createTextNode(equationResult);
         bottomScreen.innerHTML = equationResult;
@@ -77,9 +80,16 @@ const allClear = document.querySelector(".clearBtn");
             }
             let clearScreenBottom = document.querySelector(".screenBottom");
             clearScreenBottom.removeChild(clearScreenBottom.firstChild);
-        });
             //clear all input, outoput values
             input1 = null;
             input2 = null;
             displayArray = [];
             equationResult = null;
+        });
+//Delete (C)
+const deleteInput = document.querySelector(".deleteBtn");
+        deleteInput.addEventListener('click', (remove) =>{
+            let removeChar = document.querySelector(".screenTop");
+            removeChar.removeChild(removeChar.lastChild);
+            displayArray.pop();//remove last element in display array when click.
+        })
