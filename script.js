@@ -28,9 +28,7 @@ let operatorInput = document.querySelectorAll(".ope");
             displayOp = document.createTextNode(operatorInput);
             topScreen.appendChild(displayOp);
             jointInput1 = displayArray.join('');// join elements inside array into string.
-            console.log('first input: '+jointInput1);
             input1 = parseFloat(jointInput1);// assign joint string into input1 parsed as integer.
-            console.log(operatorInput);
             displayArray = []; // empty array after operator clicked, ready to take value of input 2.
         });
     });
@@ -44,7 +42,6 @@ const outputEqual = document.querySelector(".equ");
                     clearInput.removeChild(clearInput.firstChild);
                 }
         jointInput2 = displayArray.join('');
-        console.log('second input: '+jointInput2);
         input2 = parseFloat(jointInput2);
         //conditions for calculations based on what operator were clicked.
             if (operatorInput == userInput.operators[0]) {
@@ -62,7 +59,6 @@ const outputEqual = document.querySelector(".equ");
             else if (operatorInput == userInput.operators[3]) {
                 let division = input1 / input2;
                 equationResult = Math.round(division * 1000000) / 1000000;//round to n decimal places
-                console.log('equals: ' +division);
                 if (input2 == 0) {
                     equationResult = "ERROR";
                 }
@@ -125,6 +121,6 @@ const buttons = document.querySelectorAll('button');
         changeFont();
         buttons.forEach(button => {
             button.style.fontFamily = font;
-        })
+        });
     });
             
