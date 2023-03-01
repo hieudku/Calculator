@@ -87,7 +87,7 @@ button {
     font-size: 32px;
 }
 button:active {
-    box-shadow: 2px 5px #666;
-    transform: translateY(2px);
+    box-shadow: 1px 2px #666;
+    transform: translateY(1px);
     background-color: rgb(125, 113, 113);
 }
