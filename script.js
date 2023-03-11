@@ -100,6 +100,9 @@ function changeColor() {
 }
 const colorArray = 
     ['rgb(141, 117, 168)',
+    'rgb(232, 69, 69)',
+    'rgb(57, 168, 74)',
+    'rgb(61, 76, 92)',
     'rgb(242, 207, 141)', 
     'rgb(128, 177, 232)', 
     'rgb(128, 232, 192)',
@@ -114,13 +117,17 @@ let font = "";
 function changeFont() {
     font = fontArray[Math.floor(Math.random() * fontArray.length)];
 }
-const fontArray = ['cursive', 'serif', 'monospace', 'fantasy'];
+const fontArray = ['serif', 'monospace', 'fantasy', 'Verdana', 'Cambria'];
 const fonts = document.querySelector('.fontBtn');
 const buttons = document.querySelectorAll('button');
+const screenT = document.querySelector('.screenTop')
+const screenB = document.querySelector('.screenBottom')
     fonts.addEventListener('click', (e) => {
         changeFont();
         buttons.forEach(button => {
             button.style.fontFamily = font;
+            screenT.style.fontFamily = font;
+            screenB.style.fontFamily = font;
         });
     });
             
