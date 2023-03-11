@@ -26,7 +26,7 @@ body {
     border-radius: 0.5rem;
     background-color: rgb(237, 237, 237);
     border: solid black 1px;
-    margin: 1.5rem;
+    margin: 1.2rem;
     margin-bottom: 0.5rem;
     width: 85%;
     height: 5rem;
@@ -58,12 +58,12 @@ button {
 .screenTop {
     margin-top: 0.8rem;
     margin-right: 0.8rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 .screenBottom {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.9rem;
     margin-right: 0.8rem;
-    font-size: 2rem;
+    font-size: 1.9rem;
 }
 button:hover {
     background-color: rgb(205, 148, 170);
