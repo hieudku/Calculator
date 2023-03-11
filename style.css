@@ -1,23 +1,4 @@
-header {
-    padding: 10px;
-    font-size: 32px;
-    top: 0;
-}
-footer {
-    font-size: 16px;
-    padding-top: 10px;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    background-color: rgb(28, 70, 85);
-    color: white;
-    width: 100%;
-}
-header, footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 body {
     font-family: monospace;
     margin: 0;
@@ -27,13 +8,13 @@ body {
     background-color: rgb(222, 236, 242);
 }
 #calculator {
-    box-shadow: 5px 5px #666;
-    padding-bottom: 10px;
-    border-radius: 20px;
+    box-shadow: 0.3rem 0.3rem #787777;
+    padding-bottom: 2rem;
+    border-radius: 0.5rem;
     background-color: rgb(141, 117, 168);
-    margin-top: 30px;
-    width: 470px;
-    height: 660px;
+    margin-top: 1rem;
+    width: 19.7rem;
+    height: 30rem;
     border: solid black 1px;
     display: flex;
     flex-direction: column;
@@ -42,52 +23,60 @@ body {
 #screen {
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: 0.5rem;
     background-color: rgb(240, 246, 249);
     border: solid black 1px;
-    margin: 25px;
-    width: 90%;;
-    height: 150px;;
+    margin: 1.5rem;
+    margin-bottom: 0.5rem;
+    width: 85%;
+    height: 5rem;
     align-items: flex-end;
 }
 ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-left: -15px;
+    gap: 0.3rem;
+}
+#clear,
+#functional {
+    margin-left: -1.3rem;
+}
+#buttonLists{
+    margin-bottom: -3rem;
 }
 button {
+    border:rgb(79, 62, 68);
     font-family: monospace;
-    font-size: 22px;
-    border-radius: 5px;
+    font-size: 1.2em;
+    border-radius: 5rem;
     background-color: white;
-    width: 97px;
-    height: 80px;;
+    width: 4.2rem;
+    height: 4.2rem;
 }
 .screenTop {
-    padding: 5px;
-    padding-top: 15px;
-    font-size: 36px;
+    margin-top: 0.8rem;
+    margin-right: 0.8rem;
+    font-size: 1.3rem;
 }
 .screenBottom {
-    padding: 5px;
-    padding-top: 10px;
-    font-size:54px;
+    margin-bottom: 0.8rem;
+    margin-right: 0.8rem;
+    font-size: 1.5rem;
 }
 button:hover {
     background-color: rgb(205, 148, 170);
     color: whitesmoke;
-    font-size: 28px;
+    font-size: 1.2rem;
 }
 button {
-    transition: 0.25s;
+    transition: 0.45s;
 }
 .num:hover {
-    font-size: 32px;
+    font-size: 1.2rem;
 }
 button:active {
-    box-shadow: 1px 2px #666;
-    transform: translateY(1px);
-    background-color: rgb(125, 113, 113);
+    box-shadow: 0.2rem 0.5rem #363435;
+    transform: translateY(0.4rem);
+    background-color: rgb(125, 70, 93);
 }
